@@ -3,7 +3,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import asyncio
 import os
 
-TOKEN = os.getenv("8787269105:AAGlmHg0gAl7laBGj86hAXnJtus8KblRFAE")
+TOKEN = os.getenv("TOKEN")
 
 movies = {
     "krish3": "AAMCBQADGQEDDbilafDunOnoxxNtkvWBPMopKcBirIwAAoMeAAIrMIhXtXbv2vuERtkBAAdtAAM7BA"
