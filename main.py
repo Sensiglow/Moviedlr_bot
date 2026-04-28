@@ -8,7 +8,7 @@ TOKEN = os.getenv("TOKEN")
 
 # movie key → file_id
 movies = {
-    "krish3": "AAMCBQADGQEDDbilafDunOnoxxNtkvWBPMopKcBirIwAAoMeAAIrMIhXtXbv2vuERtkBAAdtAAM7BA"
+    "krish3": "AQADjhsAAoCmiVdy"
 }
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
