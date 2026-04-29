@@ -32,24 +32,29 @@ movies = {
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
-    if context.args:
-        key = context.args[0].lower()
+    
+    # Message-er bhetore text check koro (e.g., /start krish3)
+    text = update.message.text.split()
+    
+    if len(text) > 1:
+        key = text[1].lower() 
+        
         if key in movies:
             msg = await context.bot.send_video(
                 chat_id=user_id,
                 video=movies[key],
                 caption="⏳ File will be removed in 1 hour"
             )
-            # 1 hour pore delete korar logic
+            # Delete logic: 1 ghonta por file delete hobe
             await asyncio.sleep(3600)
-            await context.bot.delete_message(
-                chat_id=user_id,
-                message_id=msg.message_id
-            )
+            try:
+                await context.bot.delete_message(chat_id=user_id, message_id=msg.message_id)
+            except:
+                pass # Jodi user agei delete kore dey, tobe error skip korbe
         else:
             await update.message.reply_text("Movie not found ❌")
     else:
-        await update.message.reply_text("Send valid link")
+        await update.message.reply_text("Please use a valid link to get the movie!")
 
 # Bot Application setup (Variable name changed to bot_app)
 bot_app = ApplicationBuilder().token(TOKEN).build()
