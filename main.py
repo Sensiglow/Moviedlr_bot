@@ -26,9 +26,18 @@ keep_alive()
 TOKEN = os.getenv("TOKEN")
 
 movies = {
-    "krish3": "BAACAgUAAxkBAAFIWVRp8cYwZqbzwWKTug4-CZGLoFJE_AACDSUAAk_CkVcyCAjewtV3-jsE"
-}
+    "demo": {
+        "name": "demo post movie by krish basak",
+        "language": "Hindi",
+        "files": {
+            "480p": "BAACAgUAAxkBAAFIUHdp8Qk-t92K7GF6RAOD1uD-JVNRnQACgx4AAiswiFcRv6lJQIOxHzsE", # Tomar 480p file id
+            "720p": "BAACAgUAAxKBAAFIUHdp8Qk-t92K7GF6RAOD1UD-JVNR
 
+nQACgx4AAiswiFcRv6lJQIOxHzsE", # Tomar 720p file id
+            "1080p": "BAACAgUAAxkBAAFIWVRp8cYwZqbzwWKTug4-CZGLoFJE_AACDSUAAk_CkVcyCAjewtV3-jsE" # Tomar 1080p file id
+        }
+    }
+}
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     text = update.message.text.split()
