@@ -36,17 +36,39 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if len(text) > 1:
         key = text[1].lower()
         if key in movies:
-            # Video pathanor main logic
-            await context.bot.send_video(
-                chat_id=user_id,
-                video=movies[key],
-                caption="Here is your movie! 🍿"
-            )
-            # Delete logic off rakha holo test korar jonno
+            movie_data = movies[key]
+            
+            # Jodi movie-r bhetore multiple files thake
+            if isinstance(movie_data, dict) and "files" in movie_data:
+                movie_name = movie_data.get("name", "Unknown Movie")
+                language = movie_data.get("language", "Hindi")
+                
+                for quality, file_id in movie_data["files"].items():
+                    caption_text = (
+                        f"🎬 **Movie:** {movie_name}\n"
+                        f"🔊 **Language:** {language}\n"
+                        f"💿 **Quality:** {quality}\n\n"
+                        f"🍿 Enjoy your movie!"
+                    )
+                    
+                    await context.bot.send_video(
+                        chat_id=user_id,
+                        video=file_id,
+                        caption=caption_text,
+                        parse_mode="Markdown"
+                    )
+            
+            # Purono simple style-er jonno (jodi sudhu ekta file id thake)
+            else:
+                await context.bot.send_video(
+                    chat_id=user_id,
+                    video=movie_data,
+                    caption="Here is your movie! 🍿"
+                )
         else:
             await update.message.reply_text("Movie not found ❌")
     else:
-        await update.message.reply_text("Please use a valid link to get the movie!")
+        await update.message.reply_text("Please use a valid link!")
 
 # Bot build
 bot_app = ApplicationBuilder().token(TOKEN).build()
