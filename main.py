@@ -31,9 +31,7 @@ movies = {
         "language": "Hindi",
         "files": {
             "480p": "BAACAgUAAxkBAAFIUHdp8Qk-t92K7GF6RAOD1uD-JVNRnQACgx4AAiswiFcRv6lJQIOxHzsE", # Tomar 480p file id
-            "720p": "BAACAgUAAxKBAAFIUHdp8Qk-t92K7GF6RAOD1UD-JVNR
-
-nQACgx4AAiswiFcRv6lJQIOxHzsE", # Tomar 720p file id
+            "720p": "BAACAgUAAxKBAAFIUHdp8Qk-t92K7GF6RAOD1UD-JVNRnQACgx4AAiswiFcRv6lJQIOxHzsE", # Tomar 720p file id
             "1080p": "BAACAgUAAxkBAAFIWVRp8cYwZqbzwWKTug4-CZGLoFJE_AACDSUAAk_CkVcyCAjewtV3-jsE" # Tomar 1080p file id
         }
     }
