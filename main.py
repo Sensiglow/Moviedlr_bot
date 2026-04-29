@@ -40,15 +40,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         key = text[1].lower() 
         
         if key in movies:
-            msg = await context.bot.send_video(
+            await context.bot.send_video(
                 chat_id=user_id,
                 video=movies[key],
-                caption="⏳ File will be removed in 1 hour"
+                caption="Here is your movie! 🍿"
             )
-            # Delete logic: 1 ghonta por file delete hobe
-            await asyncio.sleep(3600)
-            try:
-                await context.bot.delete_message(chat_id=user_id, message_id=msg.message_id)
+            # Delete logic ekhon-kar moto off rakha holo test korar jonno
+            # await asyncio.sleep(3600)
+            # await context.bot.delete_message(chat_id=user_id, message_id=msg.message_id)
             except:
                 pass # Jodi user agei delete kore dey, tobe error skip korbe
         else:
