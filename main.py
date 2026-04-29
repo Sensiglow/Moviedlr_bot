@@ -27,7 +27,7 @@ keep_alive()
 TOKEN = os.getenv("TOKEN")
 
 movies = {
-    "krish3": "BAACAgUAAxkBAAFIUHdp8Qk-t92K7GF6RAOD1uD-JVNRnQACgx4AAiswiFcRv6lJQIOxHzsE"
+    "krish3": "BAACAgUAAxkBAAFIWVRp8cYwZqbzwWKTug4-CZGLoFJE_AACDSUAAk_CkVcyCAjewtV3-jsE"
 }
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
