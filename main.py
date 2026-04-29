@@ -5,12 +5,12 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import asyncio
 
-# --- FLASK SERVER FOR RENDER ---
+# --- FLASK SERVER ---
 flask_app = Flask('')
 
 @flask_app.route('/')
 def home():
-    return "Bot is alive!"
+    return "Bot is live!"
 
 def run_flask():
     port = int(os.environ.get("PORT", 8080))
@@ -20,10 +20,9 @@ def keep_alive():
     t = Thread(target=run_flask)
     t.start()
 
-# Server start koro
 keep_alive()
 
-# --- TELEGRAM BOT LOGIC ---
+# --- TELEGRAM BOT ---
 TOKEN = os.getenv("TOKEN")
 
 movies = {
@@ -32,32 +31,27 @@ movies = {
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
-    
-    # Message-er bhetore text check koro (e.g., /start krish3)
     text = update.message.text.split()
     
     if len(text) > 1:
-        key = text[1].lower() 
-        
+        key = text[1].lower()
         if key in movies:
+            # Video pathanor main logic
             await context.bot.send_video(
                 chat_id=user_id,
                 video=movies[key],
                 caption="Here is your movie! 🍿"
             )
-            # Delete logic ekhon-kar moto off rakha holo test korar jonno
-            # await asyncio.sleep(3600)
-            # await context.bot.delete_message(chat_id=user_id, message_id=msg.message_id)
-            except:
-                pass # Jodi user agei delete kore dey, tobe error skip korbe
+            # Delete logic off rakha holo test korar jonno
         else:
             await update.message.reply_text("Movie not found ❌")
     else:
         await update.message.reply_text("Please use a valid link to get the movie!")
 
-# Bot Application setup (Variable name changed to bot_app)
+# Bot build
 bot_app = ApplicationBuilder().token(TOKEN).build()
 bot_app.add_handler(CommandHandler("start", start))
 
-print("Bot is running... 🚀")
-bot_app.run_polling()
+if __name__ == '__main__':
+    print("Bot is starting... 🚀")
+    bot_app.run_polling()
