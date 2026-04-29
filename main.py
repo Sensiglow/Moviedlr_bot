@@ -30,13 +30,17 @@ movies = {
         "name": "demo post movie by krish basak",
         "language": "Hindi",
         "files": {
-            "480p": "BAACAgUAAxkBAAFIUHdp8Qk-t92K7GF6RAOD1uD-JVNRnQACgx4AAiswiFcRv6lJQIOxHzsE", # Tomar 480p file id
-            "720p": "BAACAgUAAxKBAAFIUHdp8Qk-t92K7GF6RAOD1UD-JVNRnQACgx4AAiswiFcRv6lJQIOxHzsE", # Tomar 720p file id
-            "1080p": "BAACAgUAAxkBAAFIWVRp8cYwZqbzwWKTug4-CZGLoFJE_AACDSUAAk_CkVcyCAjewtV3-jsE" # Tomar 1080p file id
+            "480p": "BAACAgUAAxkBAAFIUHdp8Qk-t92K7GF6RAOD1uD-JVNRnQACgx4AAiswiFcRv6lJQIOxHzsE",
+            "720p": "BAACAgUAAxKBAAFIUHdp8Qk-t92K7GF6RAOD1UD-JVNRnQACgx4AAiswiFcRv6lJQIOxHzsE",
+            "1080p": "BAACAgUAAxkBAAFIWVRp8cYwZqbzwWKTug4-CZGLoFJE_AACDSUAAk_CkVcyCAjewtV3-jsE"
         }
     }
 }
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if not update.message or not update.message.text:
+        return
+
     user_id = update.effective_user.id
     text = update.message.text.split()
     
@@ -45,27 +49,33 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if key in movies:
             movie_data = movies[key]
             
-            # Jodi movie-r bhetore multiple files thake
+            # Jodi multiple files thake
             if isinstance(movie_data, dict) and "files" in movie_data:
-                movie_name = movie_data.get("name", "Unknown Movie")
-                language = movie_data.get("language", "Hindi")
+                m_name = movie_data.get("name", "Unknown Movie")
+                m_lang = movie_data.get("language", "Hindi")
                 
-                for quality, file_id in movie_data["files"].items():
+                # Ei loop-tai tintai video pathabe
+                for quality, f_id in movie_data["files"].items():
                     caption_text = (
-                        f"🎬 **Movie:** {movie_name}\n"
-                        f"🔊 **Language:** {language}\n"
+                        f"🎬 **Movie:** {m_name}\n"
+                        f"🔊 **Language:** {m_lang}\n"
                         f"💿 **Quality:** {quality}\n\n"
                         f"🍿 Enjoy your movie!"
                     )
                     
-                    await context.bot.send_video(
-                        chat_id=user_id,
-                        video=file_id,
-                        caption=caption_text,
-                        parse_mode="Markdown"
-                    )
+                    try:
+                        await context.bot.send_video(
+                            chat_id=user_id,
+                            video=f_id,
+                            caption=caption_text,
+                            parse_mode="Markdown"
+                        )
+                        # Ekta chhoto gap dewa jate Telegram spam mone na kore
+                        await asyncio.sleep(1) 
+                    except Exception as e:
+                        print(f"Error sending {quality}: {e}")
             
-            # Purono simple style-er jonno (jodi sudhu ekta file id thake)
+            # Jodi purono simple style hoy
             else:
                 await context.bot.send_video(
                     chat_id=user_id,
@@ -77,7 +87,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     else:
         await update.message.reply_text("Please use a valid link!")
 
-# Bot build
+# Application Build
 bot_app = ApplicationBuilder().token(TOKEN).build()
 bot_app.add_handler(CommandHandler("start", start))
 
