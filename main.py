@@ -39,7 +39,7 @@ movies = {
         "name": "Tere Isqh Main",
         "language": "Hindi",
         "files": {
-            "480p": "BAACAgUAAxKBAAFIaiBp8sMbHJu5kaiLpHAkBWHFWYOPewACJh4AAK_CmVcfEcsr93P40zsE",
+            "480p": "BAACAgUAAxKBAAFIaiBp8sMbHJu5kaiLpHAkBWHFWYOP ewACJh4AAK_CmVcfEcsr93P40zsE",
             "720p": "BAACAgUAAxkBAAFIAiRp8sQ52ihQgDlipui60bZCwqqw2QACJx4AAk_CmVcHjaxLPw5e5jsE"
         }
     }
