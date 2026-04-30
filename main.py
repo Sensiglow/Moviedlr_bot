@@ -97,9 +97,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
             
             try:
-                msg = await context.bot.send_video(
+                msg = await context.bot.send_document(
                     chat_id=user_id,
-                    video=f_id,
+                    document=f_id,
                     caption=caption_text,
                     parse_mode="Markdown"
                 )
