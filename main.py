@@ -47,6 +47,15 @@ movies = {
             "720p": "BAACAgUAAxkBAAICOWnzjT0eoWlryfk9lI6Ym61VGLGrAAInHgACT8KZV8NCsJNPwizrOwQ"
         }
     },
+    "shivaji": {
+        "name": shivaji the boos ",
+        "language": "Hindi",
+        "files": {
+            "480p": "BQACAgUAAyEFAATC-eZnAAMOafObIMTGvPAmOz30h-u6JcmMAAEVAAJoHgACY6uZV8DFLA-CyJiVOwQ",
+            "720p": "BQACAgUAAyEFAATC-eZnAAMPafOdEdg2KYWOfC-vUAABrrNscGtlAAJrHgACY6uZV0z-2qzQtIVBOwQ",
+            "1080p": "BQACAgQAAyEFAATC-eZnAAMQafOfeRL8PqGVJFXP41GrMNofxycAAm0fAAK_kKhRavVQqcB6sek7BA"
+        }
+    },
     "cmbharat": {
         "name": "Dashing Cm Bharat new hindi Movie",
         "language": "Hindi",
