@@ -6,7 +6,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, fil
 import asyncio
 
 # --- CONFIGURATION ---
-ADMIN_ID = 5517202145  # <--- EKHANE TOMAR ADMIN ID BOSHAO (Example: 54321678)
+ADMIN_ID = 7480551514  # Tomar dewa Admin ID
 
 # --- FLASK SERVER (Keep Alive) ---
 flask_app = Flask('')
@@ -25,10 +25,10 @@ def keep_alive():
 
 keep_alive()
 
-# --- TELEGRAM BOT SETTINGS ---
+# --- TELEGRAM BOT TOKEN ---
 TOKEN = os.getenv("TOKEN")
 
-# --- MOVIE LIST ---
+# --- MOVIE LIST DATABASE ---
 movies = {
     "demo": {
         "name": "demo post movie by krish basak",
@@ -43,9 +43,17 @@ movies = {
         "name": "Tere Isqh Main",
         "language": "Hindi",
         "files": {
-            "480p": "BAACAgUAAxkBAAFId2Bp_GofnK_v7X_N6Gz0_0S7Y7n6AAI8HwAC_MWRV_pU8-P_zXpROwE",
-            "720p": "BAACAgUAAxkBAAFId2Np_GogY8N7O9G9_S3Y7n6AAI9HwAC_MWRV-P_zXpROwE",
-            "1080p": "BAACAgUAAxkBAAFId2Vp_GohY8N7O9G9_S3Y7n6AAI-HwAC_MWRV-P_zXpROwE"
+            "480p": "BAACAgUAAxkBAAFIaiBp8sMbHJu5kaiLpHAkBWHFWYOPewACJh4AAk_CmVcfEcsr93P4OzsE",
+            "720p": "BAACAgUAAxkBAAFIAiRp8sQ52ihQgDlipui60bZCwqqw2QACJx4AAk_CmVcHjaxLPw5e5jsE"
+        }
+    },
+    "cmbharat": {
+        "name": "Dashing Cm Bharat new hindi Movie",
+        "language": "Hindi",
+        "files": {
+            "480p": "BQACAgUAAXKBAAFIc0tp8217bhPVBb50YIDUP7G1PEXWNQACVSIAAK_CoVf59wa5ZzZJVjsE",
+            "720p": "BQACAgUAAXKBAAFIc4Np82XgifXon0m65a_ydVGJlbiP1gACwCIAAK_CoVdypev9J3Th9TsE",
+            "1080p": "BQACAgUAAXKBAAFic4xp82YAAco9R17dcKBpixINsbXOMtgAAsMiAAJPwqFXg9mBr5K9hyk7BA"
         }
     }
 }
@@ -53,7 +61,7 @@ movies = {
 # --- FUNCTIONS ---
 
 async def delete_message(context: ContextTypes.DEFAULT_TYPE):
-    """Timer shesh hole message delete korbe"""
+    """24 hours por message delete korbe"""
     job = context.job
     try:
         await context.bot.delete_message(chat_id=job.chat_id, message_id=job.data)
@@ -61,49 +69,57 @@ async def delete_message(context: ContextTypes.DEFAULT_TYPE):
         print(f"Error deleting: {e}")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Start command handle korbe (Movie pathabe)"""
+    """Start command handle korbe"""
     if not update.message or not update.message.text:
         return
 
     user_id = update.effective_user.id
     text = update.message.text.split()
     
-    if len(text) > 1:
-        key = text[1].lower()
-        if key in movies:
-            movie_data = movies[key]
-            m_name = movie_data.get("name", "Unknown")
-            m_lang = movie_data.get("language", "Hindi")
-            
-            for quality, f_id in movie_data["files"].items():
-                caption_text = (
-                    f"🎬 **Movie:** {m_name}\n"
-                    f"🔊 **Language:** {m_lang}\n"
-                    f"💿 **Quality:** {quality}\n\n"
-                    f"⚠️ **Note:** Video will be auto-deleted in 24 hours!"
+    # User jodi sudhu /start likhe
+    if len(text) == 1:
+        help_text = (
+            "👋 **Welcome to the Download Bot!**\n\n"
+            "Ami apnake Movie download korte sahajyo kori। Movie pete channel-er link-e click korun, "
+            "ba `/start moviename` (e.g. `/start demo`) likhe send korun।\n\n"
+            "⚠️ **Note:** Prottekta movie **24 ghonta** por auto-delete hoye jabe!"
+        )
+        await update.message.reply_text(help_text, parse_mode="Markdown")
+        return
+
+    # Movie link process kora
+    key = text[1].lower()
+    if key in movies:
+        movie_data = movies[key]
+        m_name = movie_data.get("name", "File")
+        m_lang = movie_data.get("language", "Hindi")
+        
+        for quality, f_id in movie_data["files"].items():
+            caption_text = (
+                f"🎬 **Movie:** {m_name}\n"
+                f"🔊 **Language:** {m_lang}\n"
+                f"💿 **Quality:** {quality}\n\n"
+                f"⚠️ **Note:** This video will be auto-deleted in 24 hours!"
+            )
+            try:
+                msg = await context.bot.send_video(
+                    chat_id=user_id,
+                    video=f_id,
+                    caption=caption_text,
+                    parse_mode="Markdown"
                 )
                 
-                try:
-                    msg = await context.bot.send_video(
-                        chat_id=user_id,
-                        video=f_id,
-                        caption=caption_text,
-                        parse_mode="Markdown"
-                    )
-                    # 24 hours timer (86400 seconds)
-                    context.job_queue.run_once(delete_message, 86400, data=msg.message_id, chat_id=user_id)
-                    await asyncio.sleep(1)
-                except Exception as e:
-                    print(f"Error: {e}")
-        else:
-            await update.message.reply_text("Movie not found ❌")
+                # 24 Hours Timer (86400 seconds)
+                context.job_queue.run_once(delete_message, 86400, data=msg.message_id, chat_id=user_id)
+                await asyncio.sleep(1) 
+            except Exception as e:
+                print(f"Error sending: {e}")
+    else:
+        await update.message.reply_text("❌ Sorry, movie not found!")
 
 async def handle_files(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Admin video pathale File ID ber kore debe"""
-    user_id = update.effective_user.id
-    
-    # Shudhu tumi (Admin) holei ID pabe
-    if user_id == ADMIN_ID:
+    if update.effective_user.id == ADMIN_ID:
         if update.message.video:
             f_id = update.message.video.file_id
         elif update.message.document:
@@ -112,12 +128,11 @@ async def handle_files(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
 
         await update.message.reply_text(
-            f"✅ **Admin, your File ID:**\n\n`{f_id}`\n\n👆 Click to copy and use in movies list.",
+            f"✅ **Admin, your File ID:**\n\n`{f_id}`\n\n👆 Click to copy",
             parse_mode="Markdown"
         )
-    # Shadharon user-ra video pathale bot ignore korbe
 
-# --- APP BUILD ---
+# --- BOT APP BUILD ---
 bot_app = ApplicationBuilder().token(TOKEN).build()
 
 bot_app.add_handler(CommandHandler("start", start))
