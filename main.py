@@ -52,9 +52,9 @@ movies = {
         "name": "Dashing Cm Bharat new hindi Movie",
         "language": "Hindi",
         "files": {
-            "480p": "BAACAgUAAxkBAAFIUHdp8Qk-t92K7GF6RAOD1uD-JVNRnQACgx4AAiswiFcRv6lJQIOxHzsE",
-            "720p": "BQACAgUAAxkBAAFIc4Np82XgifXon0m65a_ydVGJlbiP1gACwCIAAk_CoVdypev9J3Th9TsE",
-            "1080p": "BQACAgUAAxkBAAFIc4xp82YAAco9Rl7dcKBpixINsbXOMtgAAsMiAAJPwqFXg9mBr5K9hyk7BA"
+            "480p": "BQACAgUAAXKBAAFIc0tp8217bhPVBb50YIDUP7G1PEXWNQACVSIAAK_CoVf59wa5ZzZJVjsE",
+            "720p": "BQACAgUAAXKBAAFIc4Np82XgifXon0m65a_ydVGJlbiP1gACwCIAAK_CoVdypev9J3Th9TsE",
+            "1080p": "BQACAgUAAXKBAAFic4xp82YAAco9R17dcKBpixINsbXOMtgAAsMiAAJPwqFXg9mBr5K9hyk7BA"
         }
     },
 
