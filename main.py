@@ -47,9 +47,9 @@ movies = {
         "name": "Dashing Cm Bharat new hindi Movie",
         "language": "Hindi",
         "files": {
-            "480p": "BQACAgUAAXKBAAFIc0tp8217bhPVBb50YIDUP7G1PEXWNQACVSIAAK_CoVf59wa5ZzZJVjsE",
-            "720p": "BQACAgUAAXKBAAFIc4Np82XgifXon0m65a_ydVGJlbiP1gACwCIAAK_CoVdypev9J3Th9TsE",
-            "1080p": "BQACAgUAAXKBAAFic4xp82YAAco9R17dcKBpixINsbXOMtgAAsMiAAJPwqFXg9mBr5K9hyk7BA"
+            "480p": "BQACAgUAAxkBAAFIc0tp82I7bhPVBb5OYIDUP7GlPExwNQACvSIAAk_CoVf59wa5ZzZJVjsE",
+            "720p": "BQACAgUAAxkBAAFIc4Np82XgifXon0m65a_ydVGJlbiP1gACwCIAAk_CoVdypev9J3Th9TsE",
+            "1080p": "BQACAgUAAxkBAAFIc4xp82YAAco9Rl7dcKBpixINsbXOMtgAAsMiAAJPwqFXg9mBr5K9hyk7BA"
         }
     }
 }
@@ -89,9 +89,9 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"⚠️ **Note:** This file will be auto-deleted in 24 hours!"
             )
             try:
-                msg = await context.bot.send_document(
+                msg = await context.bot.send_video(
                     chat_id=user_id,
-                    document=f_id,
+                    video=f_id,
                     caption=caption_text,
                     parse_mode="Markdown"
                 )
