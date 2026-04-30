@@ -48,13 +48,13 @@ movies = {
     },
 
     # --- MOVIE 3 ---
-    "movie_key_3": {
-        "name": "Movie Name 3",
+    "Cm_Bharat": {
+        "name": "Cm Bharat new hindi Movie",
         "language": "Hindi",
         "files": {
-            "480p": "FILE_ID_EKHANE",
-            "720p": "FILE_ID_EKHANE",
-            "1080p": "FILE_ID_EKHANE"
+            "480p": "BQACAgUAAxkBAAFIc0tp82I7bhPVBb5OYIDUP7GlPExwNQACvSIAAk_CoVf59wa5ZzZJVjsE",
+            "720p": "BQACAgUAAxkBAAFIc4Np82XgifXon0m65a_ydVGJlbiP1gACwCIAAk_CoVdypev9J3Th9TsE",
+            "1080p": "BQACAgUAAxkBAAFIc4xp82YAAco9Rl7dcKBpixINsbXOMtgAAsMiAAJPwqFXg9mBr5K9hyk7BA"
         }
     },
 
