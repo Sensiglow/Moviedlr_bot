@@ -48,7 +48,7 @@ movies = {
     },
 
     # --- MOVIE 3 ---
-    "Cm_Bharat": {
+    "Cmbharat": {
         "name": " Dashing Cm Bharat new hindi Movie",
         "language": "Hindi",
         "files": {
