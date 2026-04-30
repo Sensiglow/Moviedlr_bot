@@ -34,26 +34,26 @@ movies = {
         "name": "demo post movie by krish basak",
         "language": "Hindi",
         "files": {
-            "480p": "BAACAgUAAxkBAAFIUHdp8Qk-t92K7GF6RAOD1uD-JVNRnQACgx4AAiswiFcRv6lJQIOxHzsE",
-            "720p": "BAACAgUAAxkBAAFIUHdp8Qk-t92K7GF6RAOD1uD-JVNRnQACgx4AAiswiFcRv6lJQIOxHzsE",
-            "1080p": "BAACAgUAAxkBAAFIWVRp8cYwZqbzwWKTug4-CZGLoFJE_AACDSUAAk_CkVcyCAjewtV3-jsE"
+            "480p": "BAACAgUAAxkBAAICM2nzjRrUUdV_ap9JnaiTYC5GCnliAAKDHgACKzCIV_ETPukQkJExOwQ",
+            "720p": "BAACAgUAAxkBAAICNWnzjSwTtN6bPolZ_UFPnrGuKVOiAAINJQACT8KRV5Q3uS9OGVhNOwQ",
+            "1080p": "BAACAgUAAxkBAAICNWnzjSwTtN6bPolZ_UFPnrGuKVOiAAINJQACT8KRV5Q3uS9OGVhNOwQ"
         }
     },
-    "tereisqmqin": {
+    "tereisqhmian": {
         "name": "Tere Isqh Main",
         "language": "Hindi",
         "files": {
-            "480p": "BAACAgUAAxkBAAFIaiBp8sMbHJu5kaiLpHAkBWHFWYOPewACJh4AAk_CmVcfEcsr93P4OzsE",
-            "720p": "BAACAgUAAxkBAAFIAiRp8sQ52ihQgDlipui60bZCwqqw2QACJx4AAk_CmVcHjaxLPw5e5jsE"
+            "480p": "BAACAgUAAxkBAAICGGnzgmrST3ggT38TEpjU9okSPUAwAAImHgACT8KZV80SEvMUQubtOwQ",
+            "720p": "BAACAgUAAxkBAAICOWnzjT0eoWlryfk9lI6Ym61VGLGrAAInHgACT8KZV8NCsJNPwizrOwQ"
         }
     },
     "cmbharat": {
         "name": "Dashing Cm Bharat new hindi Movie",
         "language": "Hindi",
         "files": {
-            "480p": "BQACAgUAAXKBAAFIc0tp8217bhPVBb50YIDUP7G1PEXWNQACVSIAAK_CoVf59wa5ZzZJVjsE",
-            "720p": "BQACAgUAAXKBAAFIc4Np82XgifXon0m65a_ydVGJlbiP1gACwCIAAK_CoVdypev9J3Th9TsE",
-            "1080p": "BQACAgUAAXKBAAFic4xp82YAAco9R17dcKBpixINsbXOMtgAAsMiAAJPwqFXg9mBr5K9hyk7BA"
+            "480p": "BQACAgUAAxkBAAICFGnzgk4UZec-WW_QfsN6m50PFRqXAAK9IgACT8KhVxY5dJSFztT9OwQ",
+            "720p": "BQACAgUAAxkBAAICFWnzglGSGOTX6TAfUw7rbTJxm-90AALAIgACT8KhVxVme9-Q2LzgOwQ",
+            "1080p": "BQACAgUAAxkBAAICFmnzglZVwbtT770McBMZfvMi1BjLAALDIgACT8KhV03TIZbFkCPiOwQ"
         }
     }
 }
