@@ -82,21 +82,43 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     # Jodi key thake (e.g., /start cmbharat)
+    async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if not update.message or not update.message.text:
+        return
+
+    user_id = update.effective_user.id
+    text = update.message.text.split()
+    
+    # 1. Sudhu /start korle Welcome Message + Hint
+    if len(text) == 1:
+        help_text = (
+            "👋 **Welcome to the Download Bot!**\n\n"
+            "Ami apnake Movie, Series ebong shob dhoroner Files download korte sahajyo kori.\n\n"
+            "🍿 **Kivabe use korben?**\n"
+            "Channel-er link-e click korun ba `/start movie_key` likhun.\n\n"
+            "⚠️ **Note:** Prottekta file **24 ghonta** por auto-delete hoye jabe!"
+        )
+        await update.message.reply_text(help_text, parse_mode="Markdown")
+        return
+
+    # 2. Jodi key thake (e.g., /start demo ba /start cmbharat)
     key = text[1].lower()
     if key in movies:
         movie_data = movies[key]
-        m_name = movie_data.get("name", "Unknown Movie")
+        m_name = movie_data.get("name", "File")
         m_lang = movie_data.get("language", "Hindi")
         
+        # Files loop (Multiple quality thakle shob pathabe)
         for quality, f_id in movie_data["files"].items():
             caption_text = (
-                f"🎬 **Movie:** {m_name}\n"
+                f"📂 **File:** {m_name}\n"
                 f"🔊 **Language:** {m_lang}\n"
                 f"💿 **Quality:** {quality}\n\n"
-                f"⚠️ **Note:** This video will be auto-deleted in 24 hours!"
+                f"⚠️ **Note:** This file will be auto-deleted in 24 hours!"
             )
             
             try:
+                # Ekhane send_document bebohar kora hoyeche jate shob file support kore
                 msg = await context.bot.send_document(
                     chat_id=user_id,
                     document=f_id,
@@ -104,14 +126,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     parse_mode="Markdown"
                 )
                 
-                # 24 hours timer (86400 seconds)
+                # 24 Hours Timer (86400 seconds)
                 context.job_queue.run_once(delete_message, 86400, data=msg.message_id, chat_id=user_id)
-                await asyncio.sleep(1) 
+                await asyncio.sleep(1) # Spam thekanor jonno
             except Exception as e:
-                print(f"Error sending {quality}: {e}")
+                print(f"Error sending {quality} for {key}: {e}")
     else:
-        await update.message.reply_text("❌ Sorry, movie not found!")
-
+        # Key khunje na pele
+        await update.message.reply_text("❌ Sorry, movie/file not found! Please check the link again.")
 # Bot Setup
 bot_app = ApplicationBuilder().token(TOKEN).build()
 bot_app.add_handler(CommandHandler("start", start))
