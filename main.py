@@ -25,7 +25,6 @@ keep_alive()
 # --- TELEGRAM BOT ---
 TOKEN = os.getenv("TOKEN")
 
-# Movie List
 movies = {
     "demo": {
         "name": "demo post movie by krish basak",
@@ -56,12 +55,11 @@ movies = {
 }
 
 async def delete_message(context: ContextTypes.DEFAULT_TYPE):
-    """Nirdishto somoy por message delete korbe"""
     job = context.job
     try:
         await context.bot.delete_message(chat_id=job.chat_id, message_id=job.data)
     except Exception as e:
-        print(f"Delete Error: {e}")
+        print(f"Error deleting: {e}")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not update.message or not update.message.text:
@@ -70,70 +68,40 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     text = update.message.text.split()
     
-    # Jodi keu shudhu /start likhe (kono key na thake)
-    if len(text) == 1:
-        help_text = (
-            "👋 **Welcome to MovieDLR Bot!**\n\n"
-            "Ami apnake movies download korte sahajyo kori. Movie pete channel-er link-e click korun.\n\n"
-            "⚠️ **Sotorkobarta:**\n"
-            "Copyright karone amader bot theke dewa prottekta video **24 ghonta** por automatic delete hoye jabe. Tai druto download ba save kore nin!"
-        )
-        await update.message.reply_text(help_text, parse_mode="Markdown")
-        return
-
-    # Jodi key thake (e.g., /start cmbharat)
-    async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    if not update.message or not update.message.text:
-        return
-
-    user_id = update.effective_user.id
-    text = update.message.text.split()
-    
-    # 1. Sudhu /start korle Welcome Message + Hint
     if len(text) == 1:
         help_text = (
             "👋 **Welcome to the Download Bot!**\n\n"
-            "Ami apnake Movie, Series ebong shob dhoroner Files download korte sahajyo kori.\n\n"
-            "🍿 **Kivabe use korben?**\n"
-            "Channel-er link-e click korun ba `/start movie_key` likhun.\n\n"
-            "⚠️ **Note:** Prottekta file **24 ghonta** por auto-delete hoye jabe!"
+            "Ami apnake Movie, Series ebong shob dhoroner Movie Files download korte sahajyo kori.Movie pete channel-er link-e click korun. Ba /start moviensme like /start demo likhe send korun \n\n"
+            "⚠️ **Note:** Prottekta movie **24 ghonta** por auto-delete hoye jabe!"
         )
         await update.message.reply_text(help_text, parse_mode="Markdown")
         return
 
-    # 2. Jodi key thake (e.g., /start demo ba /start cmbharat)
     key = text[1].lower()
     if key in movies:
         movie_data = movies[key]
         m_name = movie_data.get("name", "File")
-        m_lang = movie_data.get("language", "Hindi")
         
-        # Files loop (Multiple quality thakle shob pathabe)
         for quality, f_id in movie_data["files"].items():
             caption_text = (
                 f"📂 **File:** {m_name}\n"
-                f"🔊 **Language:** {m_lang}\n"
                 f"💿 **Quality:** {quality}\n\n"
                 f"⚠️ **Note:** This file will be auto-deleted in 24 hours!"
             )
-            
             try:
-                # Ekhane send_document bebohar kora hoyeche jate shob file support kore
                 msg = await context.bot.send_document(
                     chat_id=user_id,
                     document=f_id,
                     caption=caption_text,
                     parse_mode="Markdown"
                 )
-                
-                # 24 Hours Timer (86400 seconds)
                 context.job_queue.run_once(delete_message, 86400, data=msg.message_id, chat_id=user_id)
-                await asyncio.sleep(1) # Spam thekanor jonno
+                await asyncio.sleep(1) 
             except Exception as e:
-                print(f"Error sending {quality} for {key}: {e}")
+                print(f"Error sending: {e}")
     else:
-        # Key khunje na pele
-        await update.message.reply_text("❌ Sorry, movie/file not found! Please check the link again.")
+        await update.message.reply_text("❌ Sorry, movie not found!")
+
 # Bot Setup
 bot_app = ApplicationBuilder().token(TOKEN).build()
 bot_app.add_handler(CommandHandler("start", start))
