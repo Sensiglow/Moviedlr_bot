@@ -26,6 +26,7 @@ keep_alive()
 TOKEN = os.getenv("TOKEN")
 
 movies = {
+    # --- MOVIE 1 (Demo) ---
     "demo": {
         "name": "demo post movie by krish basak",
         "language": "Hindi",
@@ -35,12 +36,102 @@ movies = {
             "1080p": "BAACAgUAAxkBAAFIWVRp8cYwZqbzwWKTug4-CZGLoFJE_AACDSUAAk_CkVcyCAjewtV3-jsE"
         }
     },
+
+    # --- MOVIE 2 ---
     "tereisqmqin": {
         "name": "Tere Isqh Main",
         "language": "Hindi",
         "files": {
-            "480p": "BAACAgUAAxKBAAFIaiBp8sMbHJu5kaiLpHAkBWHFWYOPewACJh4AAK_CmVcfEcsr93P40zsE",
+            "480p": "BAACAgUAAxkBAAFIAiBp8sMbHJu5kaiLpHAKBwHFWYOPewACJh4AAk_CmVcfEcsr93P4Ozse",
             "720p": "BAACAgUAAxkBAAFIAiRp8sQ52ihQgDlipui60bZCwqqw2QACJx4AAk_CmVcHjaxLPw5e5jsE"
+        }
+    },
+
+    # --- MOVIE 3 ---
+    "movie_key_3": {
+        "name": "Movie Name 3",
+        "language": "Hindi",
+        "files": {
+            "480p": "FILE_ID_EKHANE",
+            "720p": "FILE_ID_EKHANE",
+            "1080p": "FILE_ID_EKHANE"
+        }
+    },
+
+    # --- MOVIE 4 ---
+    "movie_key_4": {
+        "name": "Movie Name 4",
+        "language": "Hindi",
+        "files": {
+            "480p": "FILE_ID_EKHANE",
+            "720p": "FILE_ID_EKHANE",
+            "1080p": "FILE_ID_EKHANE"
+        }
+    },
+
+    # --- MOVIE 5 ---
+    "movie_key_5": {
+        "name": "Movie Name 5",
+        "language": "Hindi",
+        "files": {
+            "480p": "FILE_ID_EKHANE",
+            "720p": "FILE_ID_EKHANE",
+            "1080p": "FILE_ID_EKHANE"
+        }
+    },
+
+    # --- MOVIE 6 ---
+    "movie_key_6": {
+        "name": "Movie Name 6",
+        "language": "Hindi",
+        "files": {
+            "480p": "FILE_ID_EKHANE",
+            "720p": "FILE_ID_EKHANE",
+            "1080p": "FILE_ID_EKHANE"
+        }
+    },
+
+    # --- MOVIE 7 ---
+    "movie_key_7": {
+        "name": "Movie Name 7",
+        "language": "Hindi",
+        "files": {
+            "480p": "FILE_ID_EKHANE",
+            "720p": "FILE_ID_EKHANE",
+            "1080p": "FILE_ID_EKHANE"
+        }
+    },
+
+    # --- MOVIE 8 ---
+    "movie_key_8": {
+        "name": "Movie Name 8",
+        "language": "Hindi",
+        "files": {
+            "480p": "FILE_ID_EKHANE",
+            "720p": "FILE_ID_EKHANE",
+            "1080p": "FILE_ID_EKHANE"
+        }
+    },
+
+    # --- MOVIE 9 ---
+    "movie_key_9": {
+        "name": "Movie Name 9",
+        "language": "Hindi",
+        "files": {
+            "480p": "FILE_ID_EKHANE",
+            "720p": "FILE_ID_EKHANE",
+            "1080p": "FILE_ID_EKHANE"
+        }
+    },
+
+    # --- MOVIE 10 ---
+    "movie_key_10": {
+        "name": "Movie Name 10",
+        "language": "Hindi",
+        "files": {
+            "480p": "FILE_ID_EKHANE",
+            "720p": "FILE_ID_EKHANE",
+            "1080p": "FILE_ID_EKHANE"
         }
     }
 }
