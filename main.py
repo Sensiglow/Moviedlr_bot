@@ -31,8 +31,16 @@ movies = {
         "language": "Hindi",
         "files": {
             "480p": "BAACAgUAAxkBAAFIUHdp8Qk-t92K7GF6RAOD1uD-JVNRnQACgx4AAiswiFcRv6lJQIOxHzsE",
-            "720p": "BAACAgUAAxKBAAFIUHdp8Qk-t92K7GF6RAOD1UD-JVNRnQACgx4AAiswiFcRv6lJQIOxHzsE",
+            "720p": "BAACAgUAAxkBAAFIUHdp8Qk-t92K7GF6RAOD1uD-JVNRnQACgx4AAiswiFcRv6lJQIOxHzsE",
             "1080p": "BAACAgUAAxkBAAFIWVRp8cYwZqbzwWKTug4-CZGLoFJE_AACDSUAAk_CkVcyCAjewtV3-jsE"
+        }
+    },
+    "movies": {
+        "name": "Tere Isqh Main",
+        "language": "Hindi",
+        "files": {
+            "480p": "BAACAgUAAxkBAAFIAiBp8sMbHJu5kaiLpHAKBwHFWYOPewACJh4AAk_CmVcfEcsr93P4Ozse",
+            "720p": "BAACAgUAAxkBAAFIAiRp8sQ52ihQgDlipui60bZCwqqw2QACJx4AAk_CmVcHjaxLPw5e5jsE"
         }
     }
 }
