@@ -25,8 +25,8 @@ keep_alive()
 # --- TELEGRAM BOT ---
 TOKEN = os.getenv("TOKEN")
 
+# Movie List
 movies = {
-    # --- MOVIE 1 (Demo) ---
     "demo": {
         "name": "demo post movie by krish basak",
         "language": "Hindi",
@@ -36,8 +36,6 @@ movies = {
             "1080p": "BAACAgUAAxkBAAFIWVRp8cYwZqbzwWKTug4-CZGLoFJE_AACDSUAAk_CkVcyCAjewtV3-jsE"
         }
     },
-
-    # --- MOVIE 2 ---
     "tereisqmqin": {
         "name": "Tere Isqh Main",
         "language": "Hindi",
@@ -46,8 +44,6 @@ movies = {
             "720p": "BAACAgUAAxkBAAFIAiRp8sQ52ihQgDlipui60bZCwqqw2QACJx4AAk_CmVcHjaxLPw5e5jsE"
         }
     },
-
-    # --- MOVIE 3 ---
     "cmbharat": {
         "name": "Dashing Cm Bharat new hindi Movie",
         "language": "Hindi",
@@ -56,85 +52,16 @@ movies = {
             "720p": "BQACAgUAAXKBAAFIc4Np82XgifXon0m65a_ydVGJlbiP1gACwCIAAK_CoVdypev9J3Th9TsE",
             "1080p": "BQACAgUAAXKBAAFic4xp82YAAco9R17dcKBpixINsbXOMtgAAsMiAAJPwqFXg9mBr5K9hyk7BA"
         }
-    },
-
-    # --- MOVIE 4 ---
-    "movie_key_4": {
-        "name": "Movie Name 4",
-        "language": "Hindi",
-        "files": {
-            "480p": "FILE_ID_EKHANE",
-            "720p": "FILE_ID_EKHANE",
-            "1080p": "FILE_ID_EKHANE"
-        }
-    },
-
-    # --- MOVIE 5 ---
-    "movie_key_5": {
-        "name": "Movie Name 5",
-        "language": "Hindi",
-        "files": {
-            "480p": "FILE_ID_EKHANE",
-            "720p": "FILE_ID_EKHANE",
-            "1080p": "FILE_ID_EKHANE"
-        }
-    },
-
-    # --- MOVIE 6 ---
-    "movie_key_6": {
-        "name": "Movie Name 6",
-        "language": "Hindi",
-        "files": {
-            "480p": "FILE_ID_EKHANE",
-            "720p": "FILE_ID_EKHANE",
-            "1080p": "FILE_ID_EKHANE"
-        }
-    },
-
-    # --- MOVIE 7 ---
-    "movie_key_7": {
-        "name": "Movie Name 7",
-        "language": "Hindi",
-        "files": {
-            "480p": "FILE_ID_EKHANE",
-            "720p": "FILE_ID_EKHANE",
-            "1080p": "FILE_ID_EKHANE"
-        }
-    },
-
-    # --- MOVIE 8 ---
-    "movie_key_8": {
-        "name": "Movie Name 8",
-        "language": "Hindi",
-        "files": {
-            "480p": "FILE_ID_EKHANE",
-            "720p": "FILE_ID_EKHANE",
-            "1080p": "FILE_ID_EKHANE"
-        }
-    },
-
-    # --- MOVIE 9 ---
-    "movie_key_9": {
-        "name": "Movie Name 9",
-        "language": "Hindi",
-        "files": {
-            "480p": "FILE_ID_EKHANE",
-            "720p": "FILE_ID_EKHANE",
-            "1080p": "FILE_ID_EKHANE"
-        }
-    },
-
-    # --- MOVIE 10 ---
-    "movie_key_10": {
-        "name": "Movie Name 10",
-        "language": "Hindi",
-        "files": {
-            "480p": "FILE_ID_EKHANE",
-            "720p": "FILE_ID_EKHANE",
-            "1080p": "FILE_ID_EKHANE"
-        }
     }
 }
+
+async def delete_message(context: ContextTypes.DEFAULT_TYPE):
+    """Nirdishto somoy por message delete korbe"""
+    job = context.job
+    try:
+        await context.bot.delete_message(chat_id=job.chat_id, message_id=job.data)
+    except Exception as e:
+        print(f"Delete Error: {e}")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not update.message or not update.message.text:
@@ -143,50 +70,49 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     text = update.message.text.split()
     
-    if len(text) > 1:
-        key = text[1].lower()
-        if key in movies:
-            movie_data = movies[key]
-            
-            # Jodi multiple files thake
-            if isinstance(movie_data, dict) and "files" in movie_data:
-                m_name = movie_data.get("name", "Unknown Movie")
-                m_lang = movie_data.get("language", "Hindi")
-                
-                # Ei loop-tai tintai video pathabe
-                for quality, f_id in movie_data["files"].items():
-                    caption_text = (
-                        f"🎬 **Movie:** {m_name}\n"
-                        f"🔊 **Language:** {m_lang}\n"
-                        f"💿 **Quality:** {quality}\n\n"
-                        f"🍿 Enjoy your movie!"
-                    )
-                    
-                    try:
-                        await context.bot.send_video(
-                            chat_id=user_id,
-                            video=f_id,
-                            caption=caption_text,
-                            parse_mode="Markdown"
-                        )
-                        # Ekta chhoto gap dewa jate Telegram spam mone na kore
-                        await asyncio.sleep(1) 
-                    except Exception as e:
-                        print(f"Error sending {quality}: {e}")
-            
-            # Jodi purono simple style hoy
-            else:
-                await context.bot.send_video(
-                    chat_id=user_id,
-                    video=movie_data,
-                    caption="Here is your movie! 🍿"
-                )
-        else:
-            await update.message.reply_text("Movie not found ❌")
-    else:
-        await update.message.reply_text("Please use a valid link!")
+    # Jodi keu shudhu /start likhe (kono key na thake)
+    if len(text) == 1:
+        help_text = (
+            "👋 **Welcome to MovieDLR Bot!**\n\n"
+            "Ami apnake movies download korte sahajyo kori. Movie pete channel-er link-e click korun.\n\n"
+            "⚠️ **Sotorkobarta:**\n"
+            "Copyright karone amader bot theke dewa prottekta video **24 ghonta** por automatic delete hoye jabe. Tai druto download ba save kore nin!"
+        )
+        await update.message.reply_text(help_text, parse_mode="Markdown")
+        return
 
-# Application Build
+    # Jodi key thake (e.g., /start cmbharat)
+    key = text[1].lower()
+    if key in movies:
+        movie_data = movies[key]
+        m_name = movie_data.get("name", "Unknown Movie")
+        m_lang = movie_data.get("language", "Hindi")
+        
+        for quality, f_id in movie_data["files"].items():
+            caption_text = (
+                f"🎬 **Movie:** {m_name}\n"
+                f"🔊 **Language:** {m_lang}\n"
+                f"💿 **Quality:** {quality}\n\n"
+                f"⚠️ **Note:** This video will be auto-deleted in 24 hours!"
+            )
+            
+            try:
+                msg = await context.bot.send_video(
+                    chat_id=user_id,
+                    video=f_id,
+                    caption=caption_text,
+                    parse_mode="Markdown"
+                )
+                
+                # 24 hours timer (86400 seconds)
+                context.job_queue.run_once(delete_message, 86400, data=msg.message_id, chat_id=user_id)
+                await asyncio.sleep(1) 
+            except Exception as e:
+                print(f"Error sending {quality}: {e}")
+    else:
+        await update.message.reply_text("❌ Sorry, movie not found!")
+
+# Bot Setup
 bot_app = ApplicationBuilder().token(TOKEN).build()
 bot_app.add_handler(CommandHandler("start", start))
 
