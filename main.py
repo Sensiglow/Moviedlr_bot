@@ -48,7 +48,7 @@ movies = {
         }
     },
     "shivaji": {
-        "name": shivaji the boos ",
+        "name": "shivaji the boos",
         "language": "Hindi",
         "files": {
             "480p": "BQACAgUAAyEFAATC-eZnAAMOafObIMTGvPAmOz30h-u6JcmMAAEVAAJoHgACY6uZV8DFLA-CyJiVOwQ",
