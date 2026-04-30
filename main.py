@@ -6,7 +6,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, fil
 import asyncio
 
 # --- CONFIGURATION ---
-ADMIN_ID = 123456789  # <--- EKHANE TOMAR ADMIN ID BOSHAO (Example: 54321678)
+ADMIN_ID = 5517202145  # <--- EKHANE TOMAR ADMIN ID BOSHAO (Example: 54321678)
 
 # --- FLASK SERVER (Keep Alive) ---
 flask_app = Flask('')
