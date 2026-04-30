@@ -35,7 +35,7 @@ movies = {
             "1080p": "BAACAgUAAxkBAAFIWVRp8cYwZqbzwWKTug4-CZGLoFJE_AACDSUAAk_CkVcyCAjewtV3-jsE"
         }
     },
-    "movies": {
+    "tereisqmqin": {
         "name": "Tere Isqh Main",
         "language": "Hindi",
         "files": {
