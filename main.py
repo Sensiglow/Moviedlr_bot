@@ -56,6 +56,14 @@ movies = {
             "1080p": "BQACAgQAAyEFAATC-eZnAAMQafOfeRL8PqGVJFXP41GrMNofxycAAm0fAAK_kKhRavVQqcB6sek7BA"
         }
     },
+    "dynamite": {
+        "name": "dynamite",
+        "language": "Hindi",
+        "files": {
+            "480p": "BQACAgUAAyEFAATC-eZnAAMRafTUHJRn_w9LF5tFoZ0IQQ3UKpcAAqAbAAJjq6lXgps7hE07KL07BA",
+            "720p": ""
+        }
+    },
     "cmbharat": {
         "name": "Dashing Cm Bharat new hindi Movie",
         "language": "Hindi",
