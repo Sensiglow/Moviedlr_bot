@@ -64,6 +64,15 @@ movies = {
             "720p": ""
         }
     },
+    "ekdeewane": {
+        "name": "Ek Deewane Ki Deewaniyat",
+        "language": "Hindi",
+        "files": {
+            "480p": "BQACAgUAAyEFAATC-eZnAAMSafWIksVMle_pdlWe8ouylx0CP-MAAnocAAJjq6lXqLrV6Khi7dI7BA",
+            "720p": "BQACAgUAAyEFAATC-eZnAAMTafWJuT7GeieuVuoG5CuXvIHHNpwAAoQcAAJjq6lXMkW88ErX8eM7BA",
+            "1080p": "BQACAgUAAyEFAATC-eZnAAMUafWLX0u7jS-tirpE573DxWTMrhkAAoscAAJjq6lXf7AxiDUg8a07BA"
+        }
+    },
     "cmbharat": {
         "name": "Dashing Cm Bharat new hindi Movie",
         "language": "Hindi",
