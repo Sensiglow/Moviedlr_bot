@@ -64,6 +64,14 @@ movies = {
             "720p": ""
         }
     },
+    "mantri": {
+        "name": "Main hi raja main hi mantri",
+        "language": "Hindi",
+        "files": {
+            "480p": "BQACAgUAAyEFAATC-eZnAAMVafgbhbooswNkrY-kkTVVryg3oBgAAl0jAAI4G8FXf2ZV--prdCk7BA",
+            "720p": "BQACAgUAAyEFAATC-eZnAAMWafgh2Uog8rws4UnoMUjUDqKY5QYAAnMjAAI4G8FXDnqxJIqvU9I7BA"
+        }
+    },
     "ekdeewane": {
         "name": "Ek Deewane Ki Deewaniyat",
         "language": "Hindi",
