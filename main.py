@@ -39,6 +39,15 @@ movies = {
             "1080p": "BAACAgUAAxkBAAICNWnzjSwTtN6bPolZ_UFPnrGuKVOiAAINJQACT8KRV5Q3uS9OGVhNOwQ"
         }
     },
+    "jananayagan": {
+        "name": "jana nayagan",
+        "language": "Hindi",
+        "files": {
+            "480p": "BQACAgUAAyEFAATC-eZnAAMOafObIMTGvPAmOz30h-u6JcmMAAEVAAJoHgACY6uZV8DFLA-CyJiVOwQ",
+            "720p": "BQACAgUAAyEFAATC-eZnAAMPafOdEdg2KYWOfC-vUAABrrNscGtlAAJrHgACY6uZV0z-2qzQtIVBOwQ",
+            "1080p": "BQACAgQAAyEFAATC-eZnAAMQafOfeRL8PqGVJFXP41GrMNofxycAAm0fAAK_kKhRavVQqcB6sek7BA"
+        }
+    },
     "tereisqhmian": {
         "name": "Tere Isqh Main",
         "language": "Hindi",
