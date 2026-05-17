@@ -43,9 +43,9 @@ movies = {
         "name": "jana nayagan",
         "language": "Hindi",
         "files": {
-            "480p": "BQACAgUAAyEFAATC-eZnAAMOafObIMTGvPAmOz30h-u6JcmMAAEVAAJoHgACY6uZV8DFLA-CyJiVOwQ",
-            "720p": "BQACAgUAAyEFAATC-eZnAAMPafOdEdg2KYWOfC-vUAABrrNscGtlAAJrHgACY6uZV0z-2qzQtIVBOwQ",
-            "1080p": "BQACAgQAAyEFAATC-eZnAAMQafOfeRL8PqGVJFXP41GrMNofxycAAm0fAAK_kKhRavVQqcB6sek7BA"
+            "480p": "BQACAgUAAyEFAATC-eZnAAMXagikvDuy4f8xDhvk85thz7-3Ml8AAq0eAAJU50lUPRatuXauftc7BA",
+            "720p": "BQACAgUAAyEFAATC-eZnAAMZagiyt1yfSqCdf_Rz5MWj40Y90hEAAr0eAAJU50lUmCRkXCyhvwc7BA",
+            "1080p": "BQACAgUAAyEFAATC-eZnAAMZagiyt1yfSqCdf_Rz5MWj40Y90hEAAr0eAAJU50lUmCRkXCyhvwc7BA"
         }
     },
     "tereisqhmian": {
